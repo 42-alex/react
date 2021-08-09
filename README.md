@@ -76,4 +76,6 @@ class Toggle extends React.Component {
 }
 ```
 
+The problem with this syntax is that a different callback is created each time the LoggingButton renders. In most cases, this is fine. However, if this callback is passed as a prop to lower components, those components might do an extra re-rendering. React documentation generally recommend binding in the constructor or using the class fields syntax, to avoid this sort of performance problem.
+
 ---
