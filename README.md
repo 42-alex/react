@@ -1,7 +1,13 @@
 ## How to make work this in callbacks?
-You have to be careful about the meaning of this in JSX callbacks. In JavaScript, class methods are not bound by default. If you forget to bind this.handleClick and pass it to onClick, this will be undefined when the function is actually called.
+You have to be careful about the meaning of this in JSX callbacks. 
+In JavaScript, class methods are not bound by default. If you forget
+to bind this.handleClick and pass it to onClick, this will be 
+undefined when the function is actually called.
 
-This is not React-specific behavior; it is a part of how functions work in JavaScript. Generally, if you refer to a method without () after it, such as onClick={this.handleClick}, you should bind that method. There are three options to resolve it.
+This is not React-specific behavior; it is a part of how functions 
+work in JavaScript. Generally, if you refer to a method without () 
+after it, such as onClick={this.handleClick}, you should bind that 
+method. There are three options to resolve it.
 
 ### Option 1. Bind "this" in constructor
 
@@ -76,7 +82,11 @@ class Toggle extends React.Component {
 }
 ```
 
-The problem with this syntax is that a different callback is created each time the Toggle renders. In most cases, this is fine. However, if this callback is passed as a prop to lower components, those components might do an extra re-rendering. React documentation generally recommend binding in the constructor or using the class fields syntax, to avoid this sort of performance problem.
+The problem with this syntax is that a different callback is created each time 
+the Toggle renders. In most cases, this is fine. However, if this callback is 
+passed as a prop to lower components, those components might do an extra 
+re-rendering. React documentation generally recommend binding in the constructor 
+or using the class fields syntax, to avoid this sort of performance problem.
 
 ---
 
