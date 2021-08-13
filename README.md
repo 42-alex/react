@@ -104,3 +104,29 @@ The above two lines are equivalent, and use arrow functions and Function.prototy
 
 In both cases, the e argument representing the React event will be passed as a second argument after the ID.
 With an arrow function, we have to pass it explicitly, but with bind any further arguments are automatically forwarded.
+
+---
+
+## How to set local state with props and avoid issues with update state
+
+If you set local state from props you may face issue when new props are not reflect in
+your state. So you need to add some additional code in "componentDidUpdate" method.
+
+```
+class ProfileStatus extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      statusText: this.props.status,
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(prevProps.status !== this.props.status) {        // without this condition you will have endless loop
+      this.setState({ statusText: this.props.status })
+    }
+  }
+  
+  // other code
+}
+```
