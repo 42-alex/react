@@ -1,4 +1,4 @@
-## How to make work this in callbacks?
+## How to make work "this" in callbacks?
 You have to be careful about the meaning of this in JSX callbacks. 
 In JavaScript, class methods are not bound by default. If you forget
 to bind this.handleClick and pass it to onClick, this will be 
