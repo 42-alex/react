@@ -195,3 +195,39 @@ class ProfileStatus extends React.Component {
 </details>
 
 [Source](https://reactjs.org/docs/forms.html#handling-multiple-inputs)
+
+---
+
+## How to read data from &lt;input type="file" /> and send it with axios
+
+1. Reading
+
+```
+const ProfileAvatar = () => {
+    const handleAvatarChange = (e) => {
+        if (e.target.files.length) {
+            const file = e.target.files[0];  //  reading
+            props.updateAvatar(file);
+        }
+    }
+
+    return <input type="file" onChange={handleAvatarChange} />
+};
+
+export default ProfileAvatar;
+```
+
+2. Sending
+
+```
+  updateAvatar(avatarFile) {
+    let data = new FormData();          // 1) create FormData instance
+    data.append('image', avatarFile);   // 2) append your file
+    debugger;
+    return axiosInstance.put(`profile/photo`, data, {
+      headers: {
+        'Content-Type': `multipart/form-data`,  // 3) specify headers
+      }
+    });
+  },
+```
