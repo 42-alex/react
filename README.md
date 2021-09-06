@@ -231,3 +231,30 @@ export default ProfileAvatar;
     });
   },
 ```
+
+---
+
+## How to add class in map method conditionally
+
+```const TodoList = (props) => {
+    // ...
+    return (
+        <ul>
+            {todos.map(todo => {        // {id: 1234, title: 'Todo title', completed: true }
+                const classes = ['todo']
+                if (todo.completed) {
+                    classes.push('completed')
+                }
+                
+                return (
+                    <li className={classes.join(' ')} key={todo.id}>
+                        // ...
+                    </li>
+                )
+            })}
+        </ul>
+    )
+}
+```
+
+[Source](https://github.com/vladilenm/react-typescript-intro/blob/d5ff18c6622cbf13f4f2ab9abc292c4b499a7853/src/components/TodoList.tsx#L27)
