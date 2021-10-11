@@ -234,7 +234,7 @@ export default ProfileAvatar;
 
 ---
 
-## How to add class in map method conditionally
+## How to add css class in map method conditionally
 
 ```const TodoList = (props) => {
     // ...
@@ -258,3 +258,29 @@ export default ProfileAvatar;
 ```
 
 [Source](https://github.com/vladilenm/react-typescript-intro/blob/d5ff18c6622cbf13f4f2ab9abc292c4b499a7853/src/components/TodoList.tsx#L27)
+
+
+---
+
+## How to get params from url with react-router
+
+Before react-router v5.1 was released (until 2019)
+
+```
+function BlogPost({ match }) {
+  let { slug } = match.params
+  // ...
+}
+```
+
+After react-router v5.1 was released (after 2019)
+
+```
+import { useParams } from 'react-router-dom'
+function BlogPost() {
+  let { slug } = useParams()
+  // ...
+}
+```
+
+[Source](https://reacttraining.com/blog/react-router-v5-1)
