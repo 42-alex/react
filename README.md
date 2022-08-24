@@ -136,7 +136,7 @@ class ProfileStatus extends React.Component {
 ## How to set one handler to several inputs
 
 <details>
-<summary>Example</summary>
+<summary>Example with a class component</summary>
 
 ```
     class Reservation extends React.Component {
@@ -195,6 +195,64 @@ class ProfileStatus extends React.Component {
 </details>
 
 [Source](https://reactjs.org/docs/forms.html#handling-multiple-inputs)
+
+<details>
+<summary>Example with a functional component</summary>
+
+```
+    export default function Form() {
+      const [person, setPerson] = useState({
+        firstName: 'Barbara',
+        lastName: 'Hepworth',
+        email: 'bhepworth@sculpture.com'
+      });
+    
+      function handleChange(e) {
+        setPerson({
+          ...person,
+          [e.target.name]: e.target.value
+        });
+      }
+    
+      return (
+        <>
+          <label>
+            First name:
+            <input
+              name="firstName"
+              value={person.firstName}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Last name:
+            <input
+              name="lastName"
+              value={person.lastName}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Email:
+            <input
+              name="email"
+              value={person.email}
+              onChange={handleChange}
+            />
+          </label>
+          <p>
+            {person.firstName}{' '}
+            {person.lastName}{' '}
+            ({person.email})
+          </p>
+        </>
+      );
+    }
+
+```
+</details>
+
+[Source](https://beta.reactjs.org/learn/updating-objects-in-state#)
 
 ---
 
