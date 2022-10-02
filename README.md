@@ -342,3 +342,29 @@ function BlogPost() {
 ```
 
 [Source](https://reacttraining.com/blog/react-router-v5-1)
+
+---
+
+## How to specify conditional parameters in route
+
+Before react-router v6
+
+```
+<Route path="/edit/:todoId?" element={<EditItem />} />
+```
+
+After react-router v6
+
+```
+<Route path="/edit">
+  <Route index element={<EditItem />} />
+  <Route path=":todoId" element={<EditItem />} />
+</Route>
+```
+or
+```
+<Route path="/edit" element={<EditItem />} />
+<Route path="/edit/:todoId" element={<EditItem />} />
+```
+
+[Source](https://reacttraining.com/blog/react-router-v5-1)
